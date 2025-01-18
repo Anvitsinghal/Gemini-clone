@@ -2,7 +2,9 @@ import React, { useContext, useState } from 'react'
 import './Sidebar.css'
 import { assets } from '../../assets/assets'
 import { context } from '../../context/Context';
-const Sidebar = () => {
+import PropTypes from 'prop-types'
+
+const Sidebar = ({mode}) => {
   const [extended,setextended]=useState(false);
   const {onSent,prevprompt,setprevprompt}=useContext(context);
   const toggle=()=>{
@@ -16,7 +18,7 @@ const Sidebar = () => {
   return (
     <>   
      
-   <div className="sidebar">
+   <div className={mode=='dark'?"sidebar":"sidebar1"}>
        <div className="top">
          <img onClick={toggle} className="menu "src={assets.menu_icon} alt="" />
            <div className="new-chat">

@@ -3,6 +3,7 @@
     min-height: 100vh;
     padding-bottom: 15vh;
     position: relative;
+
 }
 .main .nav{
     display: flex;
@@ -11,6 +12,13 @@
     font-size: 22px;
     padding: 20px;
     color: #585858;
+}
+.main .nav p{
+    font-style: italic; /* Makes the text italic */
+  font-weight: bold;  /* Makes the text bold */
+  color: black; 
+  font-size: 30px;
+
 }
 
 .main .nav img{
@@ -25,29 +33,84 @@
     margin: 50px 0px;
     font-size: 56px;
     color: #c4c7c5;
-    font-weight: 500;
+    font-weight: 600;
     padding: 20px;
 }
-.main .greet span{
+/* .main .greet span{
     background: -webkit-linear-gradient(16deg,#4b90ff,#ff5546);
     --webkit-background-clip:text;
     -webkit-text-fill-color:aquamarine;
 
-}
+} */
+.main .greet span {
+    font-size: 1.5em;
+    font-weight: bold;
+    background: linear-gradient(16deg, #4b90ff, #ff5546);
+    background-size: 200% 200%;
+    background-clip: text;          /* Standard property */
+    -webkit-background-clip: text; /* WebKit-specific property */
+    -webkit-text-fill-color: transparent; /* Ensure text is transparent */
+    animation: gradientMove 3s ease infinite;
+  }
+  
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
 .main .cards{
     display: grid;
     grid-template-columns: repeat(auto-fill,minmax(180px,1fr));
     gap:15px;
     padding: 20px;
 }
-.main .card{
+.main .card {
     height: 200px;
     padding: 15px;
     background-color: #f0f4f9;
-    position: relative
-    ;
+    position: relative;
     cursor: pointer;
-}
+    border-radius: 10px; /* Adds smooth corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation */
+  }
+  
+  .main .card:hover {
+    transform: translateY(-10px) scale(1.05); /* Lift and slightly enlarge */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    background-color: #e6eef8; /* Slightly change background color */
+  }
+  
+  .main .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #4b90ff, #ff5546);
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 10px; /* Matches card radius */
+  }
+  
+  .main .card:hover::before {
+    opacity: 0.2; /* Add a soft gradient overlay */
+  }
+  
+  .main .card:hover > * {
+    position: relative;
+    z-index: 1; /* Ensures content stays above the gradient */
+  }
+  
 .main .card img{
     width:35px;
     padding: 5px;
@@ -69,7 +132,7 @@
     padding: 0px 20px;
     margin: auto;
 }
-.search-box{
+/* .search-box{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -94,7 +157,58 @@
     display: flex;
     align-items: center;
     gap: 15px;
-}
+} */
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #f0f4f9;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth animation */
+  }
+  
+  .search-box:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Elevated shadow on hover */
+    background-color: #e8eef7; /* Slightly lighter background */
+  }
+  
+  .search-box img {
+    width: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .search-box img:hover {
+    transform: scale(1.2); /* Slightly enlarge icon on hover */
+  }
+  
+  .search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 8px;
+    font-size: 18px;
+    color: #333; /* Text color */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth focus effect */
+  }
+  
+  .search-box input:focus {
+    background-color: #ffffff; /* Highlight input on focus */
+    box-shadow: 0 0 8px rgba(75, 144, 255, 0.5); /* Blue glow effect */
+    border-radius: 25px; /* Keep the rounded shape */
+  }
+  
+  .search-box div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
 .main .bottom-info{
     font-size: 13px;
     margin: 15px auto;
